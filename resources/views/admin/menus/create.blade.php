@@ -26,9 +26,25 @@
                             </div>
                         </div>
                         <div class="sm:col-span-6 pt-5">
+                            <label for="title" class="block text-sm font-medium text-gray-700"> Price </label>
+                            <div class="mt-1">
+                                <input type="number" min="0.00" max="10000.00" step="0.01" id="price" name="price" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                            </div>
+                        </div>
+                        <div class="sm:col-span-6 pt-5">
                             <label for="body" class="block text-sm font-medium text-gray-700">Description</label>
                             <div class="mt-1">
                                 <textarea id="body" rows="3" wire:model.lazy="body" class="shadow-sm focus:ring-indigo-500 appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
+                            </div>
+                        </div>
+                        <div class="sm:col-span-6 pt-5">
+                            <label for="body" class="block text-sm font-medium text-gray-700">Categories</label>
+                            <div class="mt-1">
+                                <select multiple name="categorise[]" id="categories" class="form-multiselect block w-full mt-1">
+                                    @foreach ($categories as $category)
+                                        <option>{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="flex justify-end mt-6 p-4">
