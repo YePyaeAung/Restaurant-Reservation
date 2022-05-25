@@ -31,17 +31,28 @@
                     <tbody>
                         @foreach ($categories as $category)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            <td  class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                                 {{$category->name}}
-                            </th>
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            </td>
+                            <td  class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                                 <img src="{{ Storage::url($category->image)}}" alt="" class="w-16 h-16 rounded">
-                            </th>
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            </td>
+                            <td  class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                                 {{$category->description}}
-                            </th>
-                            <td class="px-6 py-4 text-right">
-                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            </td>
+                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                <div class="flex space-x-2">
+                                    <a href="{{ route('admin.categories.edit', $category->id) }}" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-lg text-white">Edit</a>
+                                    <form 
+                                        action="{{ route('admin.categories.destroy', $category->id) }}" 
+                                        method="POST" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-lg text-white" 
+                                        onsubmit="return confirm('Are you sure?');">
+
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                         @endforeach
