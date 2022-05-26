@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Table;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TableStoreRequest;
 use Illuminate\Http\Request;
 
 class TableController extends Controller
@@ -35,9 +36,15 @@ class TableController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TableStoreRequest $request)
     {
-        //
+        Table::create([
+            'name' => $request->name,
+            'guest_number' => $request->guest_number,
+            'status' => $request->status,
+            'location' => $request->location,
+        ]);
+        return to_route('admin.tables.index');
     }
 
     /**
