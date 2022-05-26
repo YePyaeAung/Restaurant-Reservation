@@ -12,23 +12,52 @@
             </div>
             <div class="m-2 p-2 bg-slate-100 rounded">
                 <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-10">
-                    <form enctype="multipart/form-data">
+                    <form action="{{ route('admin.reservations.store') }}" method="POST">
+                        @csrf
                         <div class="sm:col-span-6">
-                            <label for="title" class="block text-sm font-medium text-gray-700"> Name </label>
+                            <label for="first_name" class="block text-sm font-medium text-gray-700"> First Name </label>
                             <div class="mt-1">
-                                <input type="text" id="title" wire:model.lazy="title" name="title" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                <input type="text" id="first_name" wire:model.lazy="first_name" name="first_name" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                            </div>
+                        </div>
+                        <div class="sm:col-span-6">
+                            <label for="last_name" class="block text-sm font-medium text-gray-700"> Last Name </label>
+                            <div class="mt-1">
+                                <input type="text" id="last_name" wire:model.lazy="last_name" name="last_name" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                             </div>
                         </div>
                         <div class="sm:col-span-6 pt-5">
-                            <label for="title" class="block text-sm font-medium text-gray-700"> Image </label>
+                            <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
                             <div class="mt-1">
-                                <input type="file" id="image" wire:model="newImage" name="image" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                <input type="email" id="email" wire:model.lazy="email" name="email" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                             </div>
                         </div>
                         <div class="sm:col-span-6 pt-5">
-                            <label for="body" class="block text-sm font-medium text-gray-700">Description</label>
+                            <label for="tel_number" class="block text-sm font-medium text-gray-700"> Phone Number </label>
                             <div class="mt-1">
-                                <textarea id="body" rows="3" wire:model.lazy="body" class="shadow-sm focus:ring-indigo-500 appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
+                                <input type="text" id="tel_number" wire:model.lazy="tel_number" name="tel_number" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                            </div>
+                        </div>
+                        <div class="sm:col-span-6 pt-5">
+                            <label for="res_date" class="block text-sm font-medium text-gray-700"> Reservation Date </label>
+                            <div class="mt-1">
+                                <input type="datetime-local" id="res_date" wire:model.lazy="res_date" name="res_date" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                            </div>
+                        </div>
+                        <div class="sm:col-span-6 pt-5">
+                            <label for="guest_number" class="block text-sm font-medium text-gray-700"> Guest Number </label>
+                            <div class="mt-1">
+                                <input type="number" id="guest_number" wire:model.lazy="guest_number" name="guest_number" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                            </div>
+                        </div>
+                        <div class="sm:col-span-6 pt-5">
+                            <label for="table_id" class="block text-sm font-medium text-gray-700">Tabel</label>
+                            <div class="mt-1">
+                                <select name="table_id" id="table_id" class="form-multiselect block w-full mt-1">
+                                        @foreach ($tables as $table)
+                                            <option value="{{ $table->id }}">{{$table->name}}</option>
+                                        @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="flex justify-end mt-6 p-4">
