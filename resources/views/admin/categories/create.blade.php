@@ -17,19 +17,34 @@
                         <div class="sm:col-span-6">
                             <label for="name" class="block text-sm font-medium text-gray-700"> Name </label>
                             <div class="mt-1">
-                                <input type="text" id="name" wire:model.lazy="name" name="name" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                <input type="text" id="name" wire:model.lazy="name" name="name" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5 
+                                @error('name')
+                                    border-red-500
+                                @enderror
+                                " />
+                                <x-error error="name"/>
                             </div>
                         </div>
                         <div class="sm:col-span-6 pt-5">
                             <label for="image" class="block text-sm font-medium text-gray-700"> Image </label>
                             <div class="mt-1">
-                                <input type="file" id="image" wire:model="newImage" name="image" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                <input type="file" id="image" wire:model="newImage" name="image" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5
+                                @error('image')
+                                    border-red-500
+                                @enderror
+                                " />
+                                <x-error error="image"/>
                             </div>
                         </div>
                         <div class="sm:col-span-6 pt-5">
                             <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
                             <div class="mt-1">
-                                <textarea id="description" rows="3" name="description" class="shadow-sm focus:ring-indigo-500 appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
+                                <textarea id="description" rows="3" name="description" class="shadow-sm focus:ring-indigo-500 appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out focus:border-indigo-500 block w-full sm:text-sm rounded-md
+                                @error('description')
+                                    border-red-500
+                                @enderror                            
+                                "></textarea>
+                                <x-error error="description"/>
                             </div>
                         </div>
                         <div class="flex justify-end mt-6 p-4">

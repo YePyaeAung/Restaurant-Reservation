@@ -18,13 +18,23 @@
                         <div class="sm:col-span-6">
                             <label for="name" class="block text-sm font-medium text-gray-700"> Name </label>
                             <div class="mt-1">
-                                <input type="text" id="name" wire:model.lazy="name" name="name" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" value="{{ $table->name }}"/>
+                                <input type="text" id="name" wire:model.lazy="name" name="name" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5
+                                @error('name')
+                                    border-red-500
+                                @enderror
+                                " value="{{ $table->name }}"/>
+                                <x-error error="name"/>
                             </div>
                         </div>
                         <div class="sm:col-span-6 pt-5">
                             <label for="guest_number" class="block text-sm font-medium text-gray-700"> Guest Number </label>
                             <div class="mt-1">
-                                <input type="number" id="guest_number" wire:model.lazy="guest_number" name="guest_number" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" value="{{ $table->guest_number }}"/>
+                                <input type="number" id="guest_number" wire:model.lazy="guest_number" name="guest_number" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5
+                                @error('guest_number')
+                                    border-red-500
+                                @enderror
+                                " value="{{ $table->guest_number }}"/>
+                                <x-error error="guest_number"/>
                             </div>
                         </div>
                         <div class="sm:col-span-6 pt-5">
@@ -35,6 +45,7 @@
                                         <option value="{{ $status->value }}" @selected($table->status->value == $status->value)>{{$status->name}}</option>
                                     @endforeach
                                 </select>
+                                <x-error error="status"/>
                             </div>
                         </div>
                         <div class="sm:col-span-6 pt-5">
@@ -45,6 +56,7 @@
                                             <option value="{{ $location->value }} " @selected($table->location->value == $location->value)>{{$location->name}}</option>
                                         @endforeach
                                 </select>
+                                <x-error error="location"/>
                             </div>
                         </div>
                         <div class="flex justify-end mt-6 p-4">
