@@ -64,6 +64,7 @@
                     </nav>
             </div>
                 <main class="m-2 p-8 w-full">
+                    <x-flash-message/>
                     {{ $slot }}
                 </main>
         </div>
