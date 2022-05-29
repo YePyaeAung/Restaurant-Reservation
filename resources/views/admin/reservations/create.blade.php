@@ -89,7 +89,7 @@
                                 @enderror
                                 ">
                                         @foreach ($tables as $table)
-                                            <option value="{{ $table->id }}">{{$table->name}}</option>
+                                            <option value="{{ $table->id }}">{{$table->name}} ({{$table->guest_number}} Guests)</option>
                                         @endforeach
                                 </select>
                                 <x-error error="table_id"/>
