@@ -66,7 +66,7 @@
                                     <label for="res_date" class="block text-sm font-medium text-gray-700"> Reservation Date </label>
                                     <div class="mt-1">
                                         <input type="datetime-local" id="res_date" wire:model.lazy="res_date" name="res_date" 
-                                        value="{{ $reservation ? $reservation->res_date->format('Y-m-d\TH:i:s') : '' }}" 
+                                        value="{{ $reservation ? date('Y-m-d\TH:i:s', strtotime($reservation->res_date)) : '' }}" 
                                         min="{{ $min_date->format('Y-m-d\TH:i:s') }}" 
                                         max="{{ $max_date->format('Y-m-d\TH:i:s') }}" 
                                         class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5

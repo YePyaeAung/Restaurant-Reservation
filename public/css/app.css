@@ -689,6 +689,18 @@ select {
   margin-top: 4rem;
   margin-bottom: 4rem;
 }
+.mx-8 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.mx-40 {
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+.my-40 {
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+}
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -754,6 +766,12 @@ select {
 }
 .-mr-2 {
   margin-right: -0.5rem;
+}
+.mt-40 {
+  margin-top: 10rem;
+}
+.mt-56 {
+  margin-top: 14rem;
 }
 .block {
   display: block;
@@ -1265,6 +1283,10 @@ select {
   padding-top: 0px;
   padding-bottom: 0px;
 }
+.py-40 {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
 .pb-4 {
   padding-bottom: 1rem;
 }
@@ -1303,6 +1325,9 @@ select {
 }
 .pb-1 {
   padding-bottom: 0.25rem;
+}
+.pt-40 {
+  padding-top: 10rem;
 }
 .text-left {
   text-align: left;
@@ -1347,6 +1372,10 @@ select {
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
 }
 .font-medium {
   font-weight: 500;
