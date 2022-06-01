@@ -136,7 +136,7 @@
                 <img src="https://cdn.pixabay.com/photo/2014/10/19/20/59/hamburger-494706__340.jpg" alt="image">
             </div>
             <div class="w-full rounded">
-                <img src="https://cdn.pixabay.com/photo/2016/02/19/11/30/pizza-1209748_960_720.jpg" alt="image">
+                <img src="https://aungthaphay.weebly.com/uploads/1/2/9/9/129970212/s827949095227762158_p6_i1_w408.jpeg" alt="image">
             </div>
             <div class="w-full rounded">
                 <img src="https://cdn.pixabay.com/photo/2015/07/12/14/26/coffee-842020__340.jpg" alt="image">

@@ -44,7 +44,7 @@
                                 {{$reservation->email}}
                             </td>
                             <td  class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                                {{$reservation->res_date}}
+                                {{date('d-m-Y, g:i a', strtotime($reservation->res_date))}}
                             </td>
                             <td  class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                                 {{$reservation->table->name}}
