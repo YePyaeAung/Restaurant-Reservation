@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Enums\TableStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Reservation;
+use App\Models\Table;
 use App\Rules\DateBetween;
 use App\Rules\TimeBetween;
 use Carbon\Carbon;
@@ -20,7 +22,7 @@ class ReservationController extends Controller
     }
     public function storeStepOne(Request $request)
     {
-        $validated = $request->validate([
+        $stepOneValidated = $request->validate([
             'first_name' => ['required'],
             'last_name' => ['required'],
             'email' => ['required', 'email'],
@@ -31,18 +33,34 @@ class ReservationController extends Controller
 
         if (empty($request->session()->get('reservation'))) {
             $reservation = new Reservation();
-            $reservation->fill($validated);
+            $reservation->fill($stepOneValidated);
             $request->session()->put('reservation', $reservation);
         } else {
             $reservation = $request->session()->get('reservation');
-            $reservation->fill($validated);
+            $reservation->fill($stepOneValidated);
             $request->session()->put('reservation', $reservation);
         }
 
         return to_route('reservations.step.two');
     }
-    public function stepTwo()
+    public function stepTwo(Request $request)
     {
-        return 'Step Two Reservations';
+        $reservation = $request->session()->get('reservation');
+        $reservation_tables_ids = Reservation::orderBy('res_date')->get()->filter(function($value) use ($reservation) {
+            return date('Y-m-d', strtotime($value->res_date)) == date('Y-m-d', strtotime($reservation->res_date));
+        })->pluck('table_id');
+        $tables = Table::where('status', TableStatus::Avaliable)->where('guest_number', '>=', $reservation->guest_number)->whereNotIn('id', $reservation_tables_ids)->get();
+        return view('reservations.step-two', compact('reservation', 'tables'));
+    }
+    public function storeStepTwo(Request $request)
+    {
+        $stepTwoValidated = $request->validate([
+            'table_id' => ['required'],
+        ]);
+        $reservation = $request->session()->get('reservation');
+        $reservation->fill($stepTwoValidated);
+        $reservation->save();
+        $request->session()->forget('reservation');
+        return to_route('thankyou');
     }
 }

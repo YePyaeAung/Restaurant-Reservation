@@ -13,33 +13,11 @@
 
                             <div class="w-full bg-gray-200 rounded-full">
                                 <div
-                                    class="w-40 p-1 text-xs font-medium leading-none text-center text-blue-100 bg-blue-600 rounded-full">
-                                    Step1</div>
+                                class="w-100 p-1 text-xs font-medium leading-none text-center text-blue-100 bg-blue-600 rounded-full">
+                                Step 2</div>
                             </div>
-                            <form action="" method="POST">
+                            <form action="{{ route('reservations.store.step.two') }}" method="POST">
                                 @csrf
-                                <div class="sm:col-span-6 pt-5">
-                                    <label for="res_date" class="block text-sm font-medium text-gray-700"> Reservation Date </label>
-                                    <div class="mt-1">
-                                        <input type="datetime-local" id="res_date" wire:model.lazy="res_date" name="res_date" value="{{ date('Y-m-d\TH:i:s', strtotime($reservation->res_date)) }}" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5
-                                        @error('res_date')
-                                            border-red-500
-                                        @enderror
-                                        " />
-                                        <x-error error="res_date"/>
-                                    </div>
-                                </div>
-                                <div class="sm:col-span-6 pt-5">
-                                    <label for="guest_number" class="block text-sm font-medium text-gray-700"> Guest Number </label>
-                                    <div class="mt-1">
-                                        <input type="number" id="guest_number" wire:model.lazy="guest_number" name="guest_number" value="{{$reservation->guest_number}}" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5
-                                        @error('guest_number')
-                                            border-red-500
-                                        @enderror
-                                        " />
-                                        <x-error error="guest_number"/>
-                                    </div>
-                                </div>
                                 <div class="sm:col-span-6 pt-5">
                                     <label for="table_id" class="block text-sm font-medium text-gray-700">Tabel</label>
                                     <div class="mt-1">
@@ -55,8 +33,9 @@
                                         <x-error error="table_id"/>
                                     </div>
                                 </div>
-                                <div class="flex justify-end mt-6 p-4">
-                                    <button type="submit" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-lg text-white">Update</button>
+                                <div class="flex justify-between mt-6 p-4">
+                                    <a class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-lg text-white" href="{{ route('reservations.store.step.one') }}">Previous</a>
+                                    <button type="submit" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-lg text-white">Make Reservation</button>
                                 </div>
                             </form>
                         </div>
